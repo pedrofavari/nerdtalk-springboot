@@ -18,5 +18,4 @@ public class TaskDataContract {
     private String description;
 
     private Urgency urgency;
-
 }

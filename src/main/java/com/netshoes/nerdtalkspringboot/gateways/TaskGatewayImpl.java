@@ -5,6 +5,9 @@ import com.netshoes.nerdtalkspringboot.gateways.repositories.TaskRepository;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Component;
 
+import java.util.List;
+import java.util.Optional;
+
 @Component
 @RequiredArgsConstructor
 public class TaskGatewayImpl implements TaskGateway {
@@ -14,5 +17,15 @@ public class TaskGatewayImpl implements TaskGateway {
     @Override
     public Task createTask(Task task) {
         return taskRepository.save(task);
+    }
+
+    @Override
+    public List<Task> getAll() {
+        return taskRepository.findAll();
+    }
+
+    @Override
+    public Optional<Task> findOne(String uuid) {
+        return taskRepository.findById(uuid);
     }
 }
