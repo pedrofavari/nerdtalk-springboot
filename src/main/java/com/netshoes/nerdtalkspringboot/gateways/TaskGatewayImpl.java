@@ -16,7 +16,7 @@ public class TaskGatewayImpl implements TaskGateway {
 
     @Override
     public Task createTask(Task task) {
-        return taskRepository.save(task);
+        return taskRepository.insert(task);
     }
 
     @Override
@@ -27,5 +27,15 @@ public class TaskGatewayImpl implements TaskGateway {
     @Override
     public Optional<Task> findOne(String uuid) {
         return taskRepository.findById(uuid);
+    }
+
+    @Override
+    public void deleteOne(String uuid) {
+        taskRepository.deleteById(uuid);
+    }
+
+    @Override
+    public Task updateTask(Task task) {
+        return taskRepository.save(task);
     }
 }

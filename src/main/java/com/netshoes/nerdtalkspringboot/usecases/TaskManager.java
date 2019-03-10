@@ -12,4 +12,8 @@ public interface TaskManager {
     List<Task> getAll();
 
     Optional<Task> findOne(String uuid);
+
+    boolean deleteOne(String uuid);
+
+    Task updateTask(String uuid, Task task);
 }

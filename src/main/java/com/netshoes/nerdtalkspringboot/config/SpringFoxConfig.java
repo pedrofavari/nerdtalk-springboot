@@ -23,8 +23,8 @@ public class SpringFoxConfig {
 
     private ApiInfo apiInfo() {
         return new ApiInfoBuilder()
-                .title("ns-dojo")
-                .description("ns-dojo")
+                .title("Nerdtalk-springboot")
+                .description("Nerdtalk-springboot")
                 .version("1.0")
                 .build();
     }

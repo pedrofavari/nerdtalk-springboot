@@ -3,7 +3,6 @@ package com.netshoes.nerdtalkspringboot.usecases;
 import com.netshoes.nerdtalkspringboot.entities.Task;
 import com.netshoes.nerdtalkspringboot.gateways.TaskGateway;
 import lombok.RequiredArgsConstructor;
-import org.springframework.data.crossstore.ChangeSetPersister;
 import org.springframework.stereotype.Component;
 
 import java.time.LocalDateTime;
@@ -33,5 +32,28 @@ public class TaskManagerImpl implements TaskManager {
     @Override
     public Optional<Task> findOne(String uuid) {
         return taskGateway.findOne(uuid);
+    }
+
+    @Override
+    public boolean deleteOne(String uuid) {
+        if(taskGateway.findOne(uuid).isPresent()){
+            taskGateway.deleteOne(uuid);
+            return true;
+        } else {
+            return false;
+        }
+    }
+
+    @Override
+    public Task updateTask(String uuid, Task task) {
+        Task taskDatabase = taskGateway.findOne(uuid).orElse(null);
+
+        if(taskDatabase != null){
+            task.setUuid(taskDatabase.getUuid());
+            task.setDateInsertion(taskDatabase.getDateInsertion());
+            return taskGateway.updateTask(task);
+        }
+
+        return taskDatabase;
     }
 }

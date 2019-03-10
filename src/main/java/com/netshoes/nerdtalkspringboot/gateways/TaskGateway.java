@@ -12,4 +12,8 @@ public interface TaskGateway {
     List<Task> getAll();
 
     Optional<Task> findOne(String uuid);
+
+    void deleteOne(String uuid);
+
+    Task updateTask(Task task);
 }
